@@ -15,7 +15,22 @@
             {{ loadingMessage }}
         </template>
         <template v-if="!isLoading">
-            Not loading
+            <h2 v-on:click="showNodes">Nodes</h2>
+            <div v-if="currentTab == 'nodes'">
+                <ul>
+                    <li v-for="(node, id) in nodes">
+                        <Node :name="node.dn"></Node>
+                    </li>
+                </ul>
+            </div>
+            <h2 v-on:click="showGroups">Groups</h2>
+            <div v-if="currentTab == 'groups'">
+                <ul>
+                    <li v-for="(group, id) in groups">
+                        <Group :id="id"></Group>
+                    </li>
+                </ul>
+            </div>
         </template>
     </div>
     <script src="app.js"></script>
